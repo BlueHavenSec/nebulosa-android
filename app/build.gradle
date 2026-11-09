@@ -1,0 +1,28 @@
+plugins { id 'com.android.application' }
+
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file('local.properties')
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withInputStream { localProperties.load(it) }
+}
+def tmdbApiKey = localProperties.getProperty('TMDB_API_KEY', '')
+
+android {
+    namespace 'com.nebula.app'
+    compileSdk 35
+    buildFeatures { buildConfig true }
+
+    defaultConfig {
+        applicationId 'com.nebula.app'
+        minSdk 24
+        targetSdk 35
+        versionCode 1
+        versionName '1.0'
+        buildConfigField 'String', 'TMDB_API_KEY', '"' + tmdbApiKey.replace('"', '\\"') + '"'
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}

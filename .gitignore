@@ -1,0 +1,15 @@
+# Local Android SDK and private API credentials
+local.properties
+
+# Gradle and Android Studio generated files
+.gradle/
+**/build/
+.idea/
+*.iml
+
+# Local build/test exports and screenshots
+outputs/
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
